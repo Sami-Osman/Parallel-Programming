@@ -1,5 +1,5 @@
+# The BASH file set to execute as follows:
 
-The BASH file set to execute as follows:
 The first 7 lines specify the job parameters: job name, email address for notifications, output file name, number of nodes, number of CPU's per task, GPU reservation, and time limit.
 
 The next 5 lines set the initial values for array_size, block_size, shared memory flag and analysis flag.
