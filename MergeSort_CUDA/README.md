@@ -1,3 +1,7 @@
+# The colab Nootebook MyCuda.ipynb 
+
+The .ipynb file executes the project in the Colab Nootebook GPU enviroment. is prepared to execute the project by taking step by step instructions. or you can use the sbatch file directly if you are using another device or environment.
+
 # The BASH file set to execute as follows:
 
 The first 7 lines specify the job parameters: job name, email address for notifications, output file name, number of nodes, number of CPU's per task, GPU reservation, and time limit.
