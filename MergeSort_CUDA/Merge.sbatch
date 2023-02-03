@@ -1,17 +1,17 @@
 #!/bin/bash
 
-#SBATCH --job-name=P_MergeSort
+#SBATCH --job-name=P_Merge
 #SBATCH --mail-user=sami.osman@studio.unibo.it
-#SBATCH --output=MergeSort_Out.txt
+#SBATCH --output=Merge_Out.txt
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
 #SBATCH --gres=gpu:1
-#SBATCH --time=00:25:00
+#SBATCH --time=00:05:00
 
 array_size=1000
 block_size=10
-SHEMEM_flag="true"
-analysis_flag="true"
+SHEMEM_flag="false"
+analysis_flag="false"
 
 printf "Merge_Sort By Sami Osman\n"
 printf "Array size:          $array_size\n"
@@ -33,8 +33,7 @@ if($analysis_flag)
         printf "\n $block_sizes\t"
         for T in {1..5}
           do
-	    #the last argument is "false" because i am doing this task without Memory sharing.
-            cuda_EXECU_Time=$(./Merge_sort_1 $array_size $block_sizes $analysis_flag "false") 
+            cuda_EXECU_Time=$(./Merge_sort_1 $array_size $block_sizes $analysis_flag "false")
             printf "\t$cuda_EXECU_Time"
         done
       done
@@ -50,7 +49,6 @@ if($analysis_flag)
           printf "\n $A_size  "
           for T in {1..5}
             do
-	      #the last argument is "false" because i am doing this task without Memory sharing.
               cuda_EXECU_Time=$(./Merge_sort_1 $A_size $block_size $analysis_flag "false")
               printf "\t$cuda_EXECU_Time"
           done
@@ -67,7 +65,6 @@ if($analysis_flag)
         printf "\n $block_sizes1\t"
         for T in {1..5}
           do
-	    #the last argument is "true" because i am doing this task with Memory sharing.
             cuda_EXECU_Time=$(./Merge_sort_1 $array_size $block_sizes1 $analysis_flag "true")
             printf "\t$cuda_EXECU_Time"
         done
@@ -84,7 +81,6 @@ if($analysis_flag)
           printf "\n $A_size  "
           for T in {1..5}
             do
-	      #the last argument is "true" because i am doing this task with Memory sharing.
               cuda_EXECU_Time=$(./Merge_sort_1 $A_size $block_size $analysis_flag "true")
               printf "\t$cuda_EXECU_Time"
           done
